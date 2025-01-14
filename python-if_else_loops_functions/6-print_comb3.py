@@ -11,3 +11,4 @@ for i in range(10):
         else:
             # Imprime la combinaison suivie de ", "
             print("{:d}{:d}".format(i, j), end=", ")
+            

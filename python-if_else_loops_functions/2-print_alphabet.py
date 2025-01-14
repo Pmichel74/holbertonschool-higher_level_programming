@@ -1,4 +1,9 @@
 #!/usr/bin/python3
 
-# This program prints the ASCII alphabet in lowercase without a new line.
-print("".join("{}".format(chr(i)) for i in range(97, 123)), end="")
+# Ce programme imprime l'alphabet ASCII en minuscules sans nouvelle ligne
+# La fonction chr() convertit un code ASCII en caractère
+# range(97, 123) génère les codes ASCII de 'a' à 'z'
+# end="" empêche l'ajout d'une nouvelle ligne à la fin de chaque print
+
+for i in range(97, 123):
+    print("{:c}".format((i)), end="")

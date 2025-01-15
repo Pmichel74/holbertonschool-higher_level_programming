@@ -5,5 +5,5 @@ def print_last_digit(number):
     last_digit = abs(number) % 10
 
     # Print the last digit without newline and return it
-    print(last_digit, end="")
+    print("{}".format(last_digit), end="")
     return last_digit

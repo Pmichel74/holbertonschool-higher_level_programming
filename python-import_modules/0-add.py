@@ -1,15 +1,11 @@
 #!/usr/bin/python3
+# 0_add.py
 
-# Import the add function from add_0.py
-from add_0 import add
-
-# Define variables a and b
-a = 1
-b = 2
-
-# Main execution block
 if __name__ == "__main__":
-    # Calculate the result of add(a, b)
-    result = add(a, b)
-    # Print the result in the required format
-    print("{} + {} = {}".format(a, b, result))
+    """Print the sum of 1 and 2."""
+    from add_0 import add
+
+    a = 1
+    b = 2
+    print("{} + {} = {}".format(a, b, add(a, b)))
+    

@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 # prints the result of the addition of all arguments
-# Vérifie si le script est exécuté directement
+# Code exécuté uniquement si le script est lancé directement
 if __name__ == "__main__":
     """Print the addition of all arguments."""
     import sys

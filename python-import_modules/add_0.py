@@ -1,14 +1,14 @@
 #!/usr/bin/python3
 
 def add(a, b):
-	"""
-	add two integers.
+    """
+    Add two integers.
 
-	Args:
-		a: first integer
-		b: second integer
+    Args:
+        a: first integer
+        b: second integer
 
-	Returns:
-		Sum of a and b
-	"""
-	return (a + b)
+    Returns:
+        Sum of a and b
+    """
+    return a + b

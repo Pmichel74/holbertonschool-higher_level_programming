@@ -6,4 +6,6 @@ def no_c(my_string):
     for char in my_string:
         if char != 'c' and char != 'C':
             result.append(char)
+            # join(result) is used to convert the list to a string
+            # "" no separator between characters
     return ("".join(result))

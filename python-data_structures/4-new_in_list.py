@@ -7,4 +7,6 @@ def new_in_list(my_list, idx, element):
     copy = []
     for x in my_list:
         copy.append(x)
-        return (copy)
+
+    copy[idx] = element
+    return (copy)

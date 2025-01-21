@@ -25,7 +25,7 @@ Prototypes for functions written in this project:
 | `9-max_integer.py`                 | `def max_integer(my_list=[]):`                 |
 | `10-divisible_by_2.py`             | `def divisible_by_2(my_list=[]):`              |
 | `11-delete_at.py`                  | `def delete_at(my_list=[], idx=0):`            |
-| `12-switch.py                      |     
+| `12-switch.py`                    |     
 
 ## Tasks :page_with_curl:
 

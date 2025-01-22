@@ -13,7 +13,7 @@ def roman_to_int(roman_string):
     result = 0
 
     # Return 0 if input is not a valid string
-    if not isinstance(roman_string, str) or roman_string is None:
+    if type(roman_string) != str or roman_string is None:
         return result
 
     # Track previous value for subtractive combinations (like IV, IX, etc)

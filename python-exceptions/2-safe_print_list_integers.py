@@ -8,21 +8,24 @@ def safe_print_list_integers(my_list=[], x=0):
         x (int): The number of elements of my_list to print.
 
     Returns:
-        The number of integers printed.
+        The real number of integers printed.
     """
     # Counter for successfully printed integers
     ret = 0
-    
-    # Try to print x elements, skipping non-integers
+
+    # Iterate through x elements of the list
     for i in range(x):
         try:
-            # Attempt to print current element as integer
+            # Try to format and print value as integer
             print("{:d}".format(my_list[i]), end="")
             ret += 1
         except (ValueError, TypeError):
-            # Skip non-integer values
+            # Skip if value is not an integer or can't be converted
             continue
-    
-    # Print newline after all elements
+        except IndexError:
+            # Raise exception if x is larger than list length
+            raise
+
+    # Print newline after all integers
     print("")
     return ret

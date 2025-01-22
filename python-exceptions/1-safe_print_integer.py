@@ -7,13 +7,11 @@ def safe_print_integer(value):
         value: The value to print, can be any type.
 
     Returns:
-        True if value was correctly printed as integer,
+        True if value has been correctly printed as integer,
         False otherwise.
     """
     try:
-        # Attempt to print value as integer using format specifier
         print("{:d}".format(value))
-        return (True)
-    except (TypeError. ValueError):
-        # Return False if value can't be formatted as integer
-        return (False)
+        return True
+    except (TypeError, ValueError):
+        return False

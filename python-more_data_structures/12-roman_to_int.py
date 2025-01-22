@@ -13,9 +13,9 @@ def roman_to_int(roman_string):
     result = 0
 
     # Return 0 if input is not a valid string
-    if type(roman_string) != str or roman_string is None:
+    if not isinstance(roman_string, str) or roman_string is None:
         return result
-    
+
     # Track previous value for subtractive combinations (like IV, IX, etc)
     previous = None
     for letter in roman_string:
@@ -26,8 +26,8 @@ def roman_to_int(roman_string):
             result = n
             previous = n
             continue
-        # If current value is greater than previous, subtract twice the previous
-        # (once to remove the previous addition, once for the subtraction)
+        # If current value is greater than previous, subtract twice previous
+        # (once to remove previous addition, once for subtraction)
         elif previous < n:
             result = result + n - previous * 2
         # Normal case: just add the current value

@@ -12,7 +12,7 @@ def safe_print_list(my_list=[], x=0):
     """
     # Counter for successfully printed elements
     ret = 0
-    
+ 
     # Try to print x elements from the list
     for i in range(x):
         try:
@@ -22,7 +22,7 @@ def safe_print_list(my_list=[], x=0):
         except IndexError:
             # Break loop if index is out of range
             break
-    
+
     # Print newline after all elements
     print("")
     return (ret)

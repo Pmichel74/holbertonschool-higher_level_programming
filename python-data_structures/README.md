@@ -31,13 +31,11 @@ This repository contains Python scripts demonstrating various data structure man
 
 
 
-🖥️ Requirements
+## 🖥️ Requirements
 
-🐍 Python 3.8 or newer
-
-🐧 Ubuntu 20.04 LTS or equivalent
-
-🧹 pycodestyle 2.8.* (for style checking)
+- `🐍 Python 3.8 or newer`
+- `🐧 Ubuntu 20.04 LTS or equivalent`
+- `🧹 pycodestyle 2.8.* (for style checking)`
 
 ## 🚀 Getting Started
 ```bash
@@ -51,6 +49,7 @@ Clone the repository and navigate to the folder:
 ```bash
 git clone https://github.com/Pmichel74/holbertonschool-higher_level_programming.git
 cd holbertonschool-higher_level_programming/python-exceptions
+```
 
 👨‍💻 Author
 Patrick MICHEL

@@ -33,13 +33,14 @@ b = 2
 result = safe_print_division(a, b)
 print("{:d} / {:d} = {}".format(a, b, result))
 ```
-📝 Examples
-
+## 📝 Examples
+```bash
 >>> list_division([10, 8, 4], [2, 4, 4], 3)
 [5.0, 2.0, 1.0]
 >>> safe_print_division(10, 2)
 Inside result: 5.0
 5.0
+```
 
-👤 Author
-[Patrick MICHEL]
+### 👤 Author
+Patrick MICHEL

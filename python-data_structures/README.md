@@ -41,7 +41,7 @@ This repository contains Python scripts demonstrating various data structure man
 
 ## 🚀 Getting Started
 ```bash
-git clone https://github.com/yourusername/holbertonschool_higher_level_programming.git
+git clone https://github.com/Pmichel74/holbertonschool_higher_level_programming.git
 cd holbertonschool_higher_level_programming/python-data_structures
 ```
 
@@ -49,7 +49,7 @@ cd holbertonschool_higher_level_programming/python-data_structures
 Clone the repository and navigate to the folder:
 
 ```bash
-git clone https://github.com/yourusername/holbertonschool-higher_level_programming.git
+git clone https://github.com/Pmichel74/holbertonschool-higher_level_programming.git
 cd holbertonschool-higher_level_programming/python-exceptions
 
 👨‍💻 Author

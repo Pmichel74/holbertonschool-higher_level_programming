@@ -30,13 +30,13 @@ This repository contains Python scripts demonstrating various advanced data stru
    cd holbertonschool_higher_level_programming/python-more_data_structures
    ```
 
-## Exécuter chaque script directement :
+## Run each script directly:
 ```bash
 python3 0-square_matrix_simple.py
 ```
 
-## 🚀 Utilisation
-Vous pouvez également importer ces scripts dans vos propres fichiers Python et appeler les fonctions qu’ils contiennent.
+## 🚀 Usage
+You can also import these scripts into your own Python files and call the functions they contain.
 Exemple :
 ```bash
 from 2-uniq_add import uniq_add
@@ -45,6 +45,6 @@ my_list = [1, 2, 2, 4, 2, 5]
 print(uniq_add(my_list))  # Affiche: 12
 ```
 
-## 👤 Auteur
+## 👤 Author
 Patrick MICHEL
 

@@ -21,7 +21,7 @@ This repository contains Python scripts demonstrating various data structure man
   ]
   print_matrix_integer(matrix)
 
-  - `7-add_tuple.py`: ➕ Adds two tuples.  
+- `7-add_tuple.py`: ➕ Adds two tuples.  
 - `8-multiple_returns.py`: 📦 Returns a tuple with the length of a string and its first character.  
 - `9-max_integer.py`: 🚀 Returns the maximum value from a list.  
 - `10-divisible_by_2.py`: 🔍 Returns a list of booleans indicating whether each integer is divisible by 2.  

@@ -1,5 +1,4 @@
 # 3-say_my_name.txt
-
 ===========================
 How to Use 3-say_my_name.py
 ===========================
@@ -17,6 +16,13 @@ Usage
     >>> say_my_name("pat", "mich")
     My name is pat mich
 
+::
+
+    >>> say_my_name("Cornelius Maxwell", "Jones II")
+    My name is Cornelius Maxwell Jones II
+
+The parameter ```last_name``` is optional. If no last name is provided,
+an empty string is printed instead.
 
 ::
 

@@ -24,7 +24,11 @@ Checking for too many args
 	 ...
 	 TypeError: print_square() takes 1 positional argument but 2 were given
 
-
+Checking for passing None:
+	 >>> print_square(None)
+	 Traceback (most recent call last):
+         ...
+         TypeError: size must be an integer
 
 Checking for positive ints:
 	 >>> print_square(4)
@@ -71,3 +75,8 @@ Checking for non-int number types:
 	 >>> print_square(1.0)
 	 Traceback (most recent call last):
          ...
+         TypeError: size must be an integer
+	 >>> print_square(-5.5)
+	 Traceback (most recent call last):
+         ...
+         TypeError: size must be an integer

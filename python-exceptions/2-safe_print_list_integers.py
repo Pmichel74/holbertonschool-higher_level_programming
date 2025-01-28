@@ -29,3 +29,7 @@ def safe_print_list_integers(my_list=[], x=0):
     # Print newline after all integers
     print("")
     return ret
+
+if __name__ == "__main__":
+    import doctest
+    doctest.testmod()

@@ -83,14 +83,11 @@ class Rectangle:
 
     def __repr__(self):
         """Return the string representation of the Rectangle.
-
-        Format: Rectangle(width, height)
-        Used for debugging and development.
+        
+        Returns:
+            str: String that can recreate Rectangle using eval()
         """
-        # Build string representation
-        rect = "Rectangle(" + str(self.__width)
-        rect += ", " + str(self.__height) + ")"
-        return (rect)
+        return "Rectangle({}, {})".format(self.__width, self.__height)
 
     def __del__(self):
         """Print a message for every deletion of a Rectangle.

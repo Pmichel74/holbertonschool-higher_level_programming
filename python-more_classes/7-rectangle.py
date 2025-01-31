@@ -64,6 +64,8 @@ class Rectangle:
         """Return the printable representation of the Rectangle.
 
         Represents the rectangle with the print_symbol character.
+        Returns:
+            str: The string representation of the rectangle.
         """
         if self.__width == 0 or self.__height == 0:
             return ""

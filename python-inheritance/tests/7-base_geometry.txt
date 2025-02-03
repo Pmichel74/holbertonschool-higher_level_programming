@@ -65,25 +65,37 @@ TypeError: point must be an integer
 # Test with empty string as name
 >>> bg.integer_validator("", 1)
 
-# Additional tests for BaseGeometry
-
-# Test invalid name (non-string)
->>> bg.integer_validator(123, 10)
+# Test zero arguments
+>>> bg.integer_validator()
 Traceback (most recent call last):
-TypeError: 123 must be an integer
+TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-# Test negative large value
->>> bg.integer_validator("distance", -999999999)
+# Test one argument
+>>> bg.integer_validator("age")
 Traceback (most recent call last):
-ValueError: distance must be greater than 0
+TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-# Test float infinity
->>> bg.integer_validator("infinity", float('inf'))
+# Test with None as name
+>>> bg.integer_validator(None, 12)
 Traceback (most recent call last):
-TypeError: infinity must be an integer
+TypeError: name must be a string
 
-# Test area in subclass
->>> SubClass = type("SubClass", (BaseGeometry,), {"area": lambda self: 42})
->>> instance = SubClass()
->>> instance.area()
-42
+# Test with float value
+>>> bg.integer_validator("rate", 7.8)
+Traceback (most recent call last):
+TypeError: rate must be an integer
+
+# Test with float infinity
+>>> bg.integer_validator("infinite", float('inf'))
+Traceback (most recent call last):
+TypeError: infinite must be an integer
+
+# Test with float NaN
+>>> bg.integer_validator("nan", float('nan'))
+Traceback (most recent call last):
+TypeError: nan must be an integer
+
+# Test area method extensively
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented

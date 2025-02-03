@@ -5,7 +5,10 @@
 class BaseGeometry:
     """Represent base geometry."""
 
-
-def area(self):
-    """Not implemented"""
-    raise Exception("area() is not implemented")
+    def area(self):
+        """Method to calculate area.
+        
+        Raises:
+            Exception: If area() is not implemented
+        """
+        raise Exception("area() is not implemented")

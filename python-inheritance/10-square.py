@@ -18,6 +18,6 @@ class Square(Rectangle):
         # Validate size parameter using inherited method
         self.integer_validator("size", size)
         # Initialize the parent class with size for both width and height
-        Rectangle.__init__(size, size)
+        super().__init__(size, size)
         # Set private size attribute
         self.__size = size

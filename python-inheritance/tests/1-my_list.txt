@@ -52,6 +52,13 @@ A ``TypeError`` will be raised if the argument is not iterable.
     Traceback (most recent call last):
     TypeError: 'int' object is not iterable
 
+# Test with string
+::
+
+    >>> my_list = MyList("Hello")
+    >>> print(my_list)
+    ['H', 'e', 'l', 'l', 'o']
+
 Method ``print_sorted``
 =======================
 
@@ -86,3 +93,47 @@ The ``print_sorted`` method prints the list in ascending order.
     >>> my_list = MyList([2, 3, 1, 4])
     >>> my_list.print_sorted()
     [1, 2, 3, 4]
+
+# Test with empty list print_sorted
+::
+
+    >>> my_list = MyList()
+    >>> my_list.print_sorted()
+    []
+
+# Test with one element
+::
+
+    >>> my_list = MyList([1])
+    >>> my_list.print_sorted()
+    [1]
+
+# Test with multiple elements unsorted
+::
+
+    >>> my_list = MyList([1, 4, 2, 3, 5])
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+
+# Test with negative numbers
+::
+
+    >>> my_list = MyList([-1, -4, 2, 3, -5])
+    >>> my_list.print_sorted()
+    [-5, -4, -1, 2, 3]
+
+# Test original list unchanged
+::
+
+    >>> my_list = MyList([1, 4, 2, 3, 5])
+    >>> my_list.print_sorted()
+    [1, 2, 3, 4, 5]
+    >>> print(my_list)
+    [1, 4, 2, 3, 5]
+
+# Test with duplicate elements
+::
+
+    >>> my_list = MyList([1, 2, 2, 3, 4, 2])
+    >>> my_list.print_sorted()
+    [1, 2, 2, 2, 3, 4]

@@ -3,6 +3,12 @@
 contains the MyList class
 """
 
+class Mylist(list):
+    """a subclass of list"""
+    def___init__(self):
+    """initializes the object"""
+    super().__init__()
+
 
 def print_sorted(self):
     """prints the sorted list"""

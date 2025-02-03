@@ -1,101 +1,79 @@
+# Test BaseGeometry class
 >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 >>> bg = BaseGeometry()
 
-# Test area() method
+# Test area method
 >>> bg.area()
 Traceback (most recent call last):
 Exception: area() is not implemented
 
-# Test integer_validator() with valid input
+# Test integer_validator with valid integers
 >>> bg.integer_validator("my_int", 12)
+>>> bg.integer_validator("width", 89)
+>>> bg.integer_validator("positive", 1)
 
-# Test integer_validator() with invalid type
+# Test integer_validator with invalid types
 >>> bg.integer_validator("name", "John")
 Traceback (most recent call last):
 TypeError: name must be an integer
 
-# Test integer_validator() with invalid value
 >>> bg.integer_validator("age", 0)
 Traceback (most recent call last):
 ValueError: age must be greater than 0
 
-# Test with negative number
 >>> bg.integer_validator("distance", -4)
 Traceback (most recent call last):
 ValueError: distance must be greater than 0
 
-# Test with float
 >>> bg.integer_validator("average", 7.8)
 Traceback (most recent call last):
 TypeError: average must be an integer
 
-# Test with None
 >>> bg.integer_validator("age", None)
 Traceback (most recent call last):
 TypeError: age must be an integer
 
-# Test with missing arguments
+# Test missing arguments
 >>> bg.integer_validator()
 Traceback (most recent call last):
 TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
 
-# Test with boolean
->>> bg.integer_validator("valid", True)
-Traceback (most recent call last):
-TypeError: valid must be an integer
-
-# Test with list
->>> bg.integer_validator("measures", [1, 2, 3])
-Traceback (most recent call last):
-TypeError: measures must be an integer
-
-# Test with dictionary
->>> bg.integer_validator("params", {"key": 1})
-Traceback (most recent call last):
-TypeError: params must be an integer
-
-# Test with tuple
->>> bg.integer_validator("point", (1, 2))
-Traceback (most recent call last):
-TypeError: point must be an integer
-
-# Test with large number
->>> bg.integer_validator("distance", 1000000)
-
-# Test with empty string as name
->>> bg.integer_validator("", 1)
-
-# Test zero arguments
->>> bg.integer_validator()
-Traceback (most recent call last):
-TypeError: integer_validator() missing 2 required positional arguments: 'name' and 'value'
-
-# Test one argument
 >>> bg.integer_validator("age")
 Traceback (most recent call last):
 TypeError: integer_validator() missing 1 required positional argument: 'value'
 
-# Test with None as name
->>> bg.integer_validator(None, 12)
+# Test with various invalid types
+>>> bg.integer_validator("list", [1])
 Traceback (most recent call last):
-TypeError: name must be a string
+TypeError: list must be an integer
 
-# Test with float value
->>> bg.integer_validator("rate", 7.8)
+>>> bg.integer_validator("tuple", (1,))
 Traceback (most recent call last):
-TypeError: rate must be an integer
+TypeError: tuple must be an integer
 
-# Test with float infinity
->>> bg.integer_validator("infinite", float('inf'))
+>>> bg.integer_validator("dict", {1:2})
 Traceback (most recent call last):
-TypeError: infinite must be an integer
+TypeError: dict must be an integer
 
-# Test with float NaN
+>>> bg.integer_validator("bool", True)
+Traceback (most recent call last):
+TypeError: bool must be an integer
+
+>>> bg.integer_validator("set", {1, 2, 3})
+Traceback (most recent call last):
+TypeError: set must be an integer
+
+# Test with special float values
+>>> bg.integer_validator("inf", float('inf'))
+Traceback (most recent call last):
+TypeError: inf must be an integer
+
 >>> bg.integer_validator("nan", float('nan'))
 Traceback (most recent call last):
 TypeError: nan must be an integer
 
-# Test area method extensively
->>> bg.area()
+# Test with empty values
+>>> bg.integer_validator("", 1)
+>>> bg.integer_validator(None, 1)
 Traceback (most recent call last):
-Exception: area() is not implemented
+TypeError: name must be a string

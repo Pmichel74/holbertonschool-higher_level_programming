@@ -52,47 +52,6 @@ A ``TypeError`` will be raised if the argument is not iterable.
     Traceback (most recent call last):
     TypeError: 'int' object is not iterable
 
-A ``TypeError`` will be raised for any more than one instantiation arguments.
-
-::
-
-    >>> my_list = MyList([1, 2], [3, 4])
-    Traceback (most recent call last):
-    TypeError: list() takes at most 1 argument (2 given)
-
-Usage
-=====
-
-``MyList`` is an inherited ``list`` class, and thus features the same methods.
-For instance, elements can be added to a ``MyList`` with the ``append()`` method.
-
-::
-
-    >>> my_list = MyList()
-    >>> my_list.append(1)
-    >>> my_list.append(2)
-    >>> my_list.append(3)
-    >>> print(my_list)
-    [1, 2, 3]
-
-Replaced with indexing:
-
-::
-
-    >>> my_list[0] = 5
-    >>> print(my_list)
-    [5, 2, 3]
-
-And removed with the ``remove()`` method.
-
-::
-
-    >>> my_list.remove(5)
-    >>> print(my_list)
-    [2, 3]
-
-See the documentation on Python lists for more built-in methods.
-
 Method ``print_sorted``
 =======================
 
@@ -125,11 +84,5 @@ The ``print_sorted`` method prints the list in ascending order.
 ::
 
     >>> my_list = MyList([2, 3, 1, 4])
-    >>> my_list.print_sorted()
-    [1, 2, 3, 4]
-
-::
-
-    >>> my_list = MyList([4, 3, 2, 1])
     >>> my_list.print_sorted()
     [1, 2, 3, 4]

@@ -1,5 +1,10 @@
 #!/usr/bin/python3
+# File: 8-rectangle.py
+# Author: Student
+# Description: Class Rectangle that inherits from BaseGeometry
+
 """Defines a class Rectangle that inherits from BaseGeometry."""
+# Import BaseGeometry class from module 7-base_geometry
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
@@ -13,7 +18,11 @@ class Rectangle(BaseGeometry):
             width (int): The width of the new Rectangle.
             height (int): The height of the new Rectangle.
         """
+        # Validate width parameter using inherited method
         self.integer_validator("width", width)
+        # Set private width attribute
         self.__width = width
+        # Validate height parameter using inherited method
         self.integer_validator("height", height)
+        # Set private height attribute
         self.__height = height

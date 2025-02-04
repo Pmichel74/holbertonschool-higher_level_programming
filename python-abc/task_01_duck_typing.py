@@ -62,6 +62,7 @@ def shape_info(shape):
 
 
 # Test the implementation if this file is run directly
+# This block only executes if the script is run directly
 if __name__ == "__main__":
     # Create test instances
     circle = Circle(radius=7)
@@ -70,3 +71,25 @@ if __name__ == "__main__":
     # Display information for both shapes
     shape_info(circle)
     shape_info(rectangle)
+
+    # Test with negative numbers
+    print("\nTesting with negative numbers:")
+    try:
+        negative_circle = Circle(radius=-3)
+    except ValueError as e:
+        print(f"Error creating circle: {e}")
+
+    try:
+        negative_rectangle = Rectangle(width=-2, height=4)
+    except ValueError as e:
+        print(f"Error creating rectangle: {e}")
+
+    try:
+        negative_rectangle = Rectangle(width=2, height=-4)
+    except ValueError as e:
+        print(f"Error creating rectangle: {e}")
+
+    try:
+        negative_rectangle = Rectangle(width=-2, height=-4)
+    except ValueError as e:
+        print(f"Error creating rectangle: {e}")

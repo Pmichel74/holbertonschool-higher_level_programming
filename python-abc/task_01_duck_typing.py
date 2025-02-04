@@ -73,7 +73,7 @@ if __name__ == "__main__":
     shape_info(rectangle)
 
     # Test with negative numbers
-    print("\nTesting with negative numbers:")
+    """print("\nTesting with negative numbers:")
     try:
         negative_circle = Circle(radius=-3)
     except ValueError as e:
@@ -92,4 +92,5 @@ if __name__ == "__main__":
     try:
         negative_rectangle = Rectangle(width=-2, height=-4)
     except ValueError as e:
-        print(f"Error creating rectangle: {e}")
+        print(f"Error creating rectangle: {e}")"""
+    

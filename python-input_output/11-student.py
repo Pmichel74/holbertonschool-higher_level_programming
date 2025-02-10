@@ -20,9 +20,30 @@ class Student:
     def to_json(self, attrs=None):
         """Get a dictionary representation of the Student.
 
-        If attrs is a list of strings, represents only those attributes
-        included in the list.
+        Args:
+            attrs (list): Optional list of strings: attribute names.
+                         If None, all attributes are included.
+        Returns:
+            dict: Dictionary containing the specified attributes.
+        """
+        if not isinstance(attrs, list):
+            return self.__dict__
+
+        # Verify all elements are strings
+        for attr in attrs:
+            if not isinstance(attr, str):
+                return self.__dict__
+
+        # Create filtered dictionary
+        return {attr: self.__dict__[attr]
+                for attr in attrs if attr in self.__dict__}
+
+    def reload_from_json(self, json):
+        """Replace all attributes of the Student.
 
         Args:
-            attrs (list): (Optional) The attributes to represent.
+            json (dict): The key/value pairs to replace attributes with.
         """
+        for key, value in json.items():
+            # Sets or updates attribute 'k' with value 'v' on Student instance
+            setattr(self, key, value)

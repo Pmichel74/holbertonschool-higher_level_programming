@@ -136,7 +136,7 @@ Square with str() method
 🚀 Installation & Testing
 
 # Clone repository
-git clone https://github.com/yourusername/python-inheritance.git
+git clone https://github.com/Pmichel74/python-inheritance.git
 cd python-inheritance
 
 # Run tests

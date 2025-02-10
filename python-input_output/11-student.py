@@ -46,4 +46,5 @@ class Student:
         """
         for key, value in json.items():
             # Sets or updates attribute 'k' with value 'v' on Student instance
+            # equivalent a self.key = value
             setattr(self, key, value)

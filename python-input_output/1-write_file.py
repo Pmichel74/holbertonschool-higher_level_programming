@@ -14,5 +14,5 @@ def write_file(filename="", text=""):
     # Ouvre le fichier en mode écriture avec encodage UTF-8
     # Si le fichier n'existe pas, il sera créé
     with open(filename, "w", encoding="utf-8") as f:
-        # Écrit le texte dans le fichier et retourne le nombre de caractères écrits
+        # Écrit texte fichier et retourne le nombre de caractères écrits
         return f.write(text)

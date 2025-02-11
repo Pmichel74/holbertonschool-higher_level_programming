@@ -22,6 +22,6 @@ def load_and_deserialize(filename):
         returns the python string
     """
 
-    with open(Filename, "r", encoding="utf-8") as f:
+    with open(filename, "r", encoding="utf-8") as f:
         dictionary = json.load(f)
         return dictionary

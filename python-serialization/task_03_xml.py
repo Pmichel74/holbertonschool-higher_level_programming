@@ -1,55 +1,54 @@
 #!/usr/bin/python3
-# Import du module ElementTree pour manipuler le XML
+"""XML serialization module"""
 import xml.etree.ElementTree as ET
+import xml.dom.minidom
 
 
 def serialize_to_xml(dictionary, filename):
     """
-    Serialize a Python dictionary into XML format and save it to a file.
-
+    Serialize a Python dictionary to XML format.
     Args:
-    - dictionary (dict): Python dictionary to serialize.
-    - filename (str): Filename to save the XML data.
-
-    Returns:
-    - None
+        dictionary: The dictionary to serialize
+        filename: The output file name
     """
-    # Création de l'élément racine 'data'
-    root = ET.Element('data')
+    # Create root element
+    root = ET.Element("data")
 
-    # Parcours des paires clé-valeur du dictionnaire
+    # Add each key-value pair as a child element
     for key, value in dictionary.items():
-        # Création d'un sous-élément pour chaque clé
         child = ET.SubElement(root, key)
-        # Définition du texte de l'élément comme la valeur convertie en string
         child.text = str(value)
 
-    # Création de l'arbre XML final
+    # Create XML tree
     tree = ET.ElementTree(root)
-    # Écriture de l'arbre dans le fichier
-    tree.write(filename)
+
+    # Convert tree to string
+    xml_str = ET.tostring(root, encoding='unicode')
+
+    # Use minidom to format XML nicely
+    dom = xml.dom.minidom.parseString(xml_str)
+    pretty_xml_str = dom.toprettyxml(indent="  ")
+
+    # Write formatted XML to file
+    with open(filename, 'w') as f:
+        f.write(pretty_xml_str)
 
 
 def deserialize_from_xml(filename):
     """
-    Deserialize XML data from a file into a Python dictionary.
-
+    Deserialize XML file to Python dictionary.
     Args:
-    - filename (str): Filename from which to read XML data.
-
+        filename: The XML file to read
     Returns:
-    - dict: Deserialized Python dictionary.
+        The reconstructed dictionary
     """
-    # Lecture et analyse du fichier XML
+    # Read and parse XML file
     tree = ET.parse(filename)
-    # Récupération de l'élément racine
     root = tree.getroot()
 
-    # Dictionnaire pour stocker les données désérialisées
-    result = {}
-    # Parcours des éléments enfants de la racine
+    # Create dictionary from XML elements
+    dictionary = {}
     for child in root:
-        # Stockage de la paire tag:text dans le dictionnaire
-        result[child.tag] = child.text
+        dictionary[child.tag] = child.text
 
-    return result
+    return dictionary

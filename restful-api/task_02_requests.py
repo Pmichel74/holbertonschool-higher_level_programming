@@ -41,8 +41,8 @@ def fetch_and_save_posts():
         json_data = res.json()
 
         # Extract only needed fields from each post
-        filtered_data = [{key: post[key] for key in ('id', 'title', 'body')} 
-                        for post in json_data]
+        filtered_data = [{key: post[key] for key in ('id', 'title', 'body')}
+                         for post in json_data]
 
         # Define CSV structure
         headers = ['id', 'title', 'body']

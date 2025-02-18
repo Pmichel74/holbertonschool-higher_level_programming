@@ -6,8 +6,7 @@ import csv
 
 
 def fetch_and_print_posts():
-    """Function that fetches posts from
-    JSONPlaceholder API and prints titles"""
+    """Fetches and prints posts from JSONPlaceholder"""
     url = "https://jsonplaceholder.typicode.com/posts"
 
     try:
@@ -17,15 +16,13 @@ def fetch_and_print_posts():
     except requests.RequestException as e:
         print(f"Failed to retrieve data: {e}")
         return
-    except json.JSONDecodeError as e:
-        print(f"Failed to parse JSON: {e}")
-        return
 
     print("Status Code: {}".format(res.status_code))
 
-    # Print all post titles
-    for post in json_data:
-        print(post["title"])
+    # Print titles only if request was successful
+    if res.status_code == 200:
+        for post in json_data:
+            print(post["title"])
 
 
 def fetch_and_save_posts():

@@ -16,7 +16,10 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
     def do_GET(self):
         """Handle GET requests to different endpoints
         / : Returns welcome message
-        """
+        /data : Returns JSON data
+        /status : Returns server status
+        /info : Returns API information
+        Other paths: Returns 404 error"""
 
         # Root endpoint - Welcome message
         if self.path == "/":
@@ -43,6 +46,17 @@ class MyHandler(http.server.BaseHTTPRequestHandler):
             self.send_header("Content-type", "text/plain")
             self.end_headers()
             self.wfile.write(b"OK")
+
+        # Info endpoint - Returns API information
+        elif self.path == "/info":
+            self.send_response(200)
+            self.send_header("Content-type", "application/json")
+            self.end_headers()
+            info_data = {
+                "version": "1.0",
+                "description": "A simple API built with http.server"
+            }
+            self.wfile.write(json.dumps(info_data).encode('utf-8'))
 
         # Handle 404 for undefined endpoints
         else:

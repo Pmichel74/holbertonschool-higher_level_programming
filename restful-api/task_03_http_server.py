@@ -8,17 +8,18 @@ import json
 # Define server port
 PORT = 8000
 
+
 class MyHandler(http.server.BaseHTTPRequestHandler):
     """Custom HTTP request handler class
     Handles different endpoints with specific responses"""
-    
+
     def do_GET(self):
         """Handle GET requests to different endpoints
         / : Returns welcome message
         /data : Returns JSON data
         /status : Returns server status
         Other paths: Returns 404 error"""
-        
+
         # Root endpoint - Welcome message
         if self.path == "/":
             self.send_response(200)

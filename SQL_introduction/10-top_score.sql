@@ -1,6 +1,6 @@
--- -- Lists all records of the table second_table.
+-- Lists all records of the table second_table.
 -- Records are ordered by adescending score.
 SELECT *
-FROM `second_table`
-ORDER BY `score` DESC;
+FROM second_table
+ORDER BY score DESC;
              

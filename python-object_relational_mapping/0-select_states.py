@@ -1,22 +1,22 @@
 #!/usr/bin/python3
 """
-    Script qui liste tous les états de la base de données.
+    Script that lists all states from the database.
 """
 import MySQLdb
-import sys  # Module pour accéder aux arguments de la ligne de commande
+import sys  # Module to access command line arguments
 
 
 def connectDb(user, password, db):
     """
-    Se connecte à la base de données MySQL et retourne la connexion.
+    Connects to the MySQL database and returns the connection.
 
     Arguments:
-        user (str): Nom d'utilisateur MySQL
-        password (str): Mot de passe MySQL
-        db (str): Nom de la base de données
+        user (str): MySQL username
+        password (str): MySQL password
+        db (str): Database name
 
-    Retourne:
-        Connection: Connexion à la base de données MySQL
+    Returns:
+        Connection: MySQL database connection
     """
     connection = MySQLdb.connect(
         host="localhost",
@@ -34,19 +34,19 @@ if __name__ == "__main__":
     password = sys.argv[2]
     database = sys.argv[3]
 
-    # Établir la connexion à la base de données
+    # Establish the database connection
     db = connectDb(username, password, database)
 
-    # Créer un curseur
+    # Create a cursor
     cursor = db.cursor()
 
-    # Exécuter une requête pour sélectionner tous les états
+    # Execute a query to select all states
     cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
 
-    # Récupérer tous les résultats
+    # Fetch all results
     results = cursor.fetchall()
 
-    # Afficher les résultats
+    # Display the results
     for row in results:
         print(row)
     cursor.close()

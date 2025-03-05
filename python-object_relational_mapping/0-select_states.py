@@ -23,7 +23,8 @@ def connectDb(user, password, db):
         port=3306,
         user=user,
         passwd=password,
-        db=db
+        db=db,
+        charset="utf8"
     )
     return connection
 

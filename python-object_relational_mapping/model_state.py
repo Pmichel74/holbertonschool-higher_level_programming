@@ -3,7 +3,7 @@
     Définition de la classe State et déclaration de Base
 """
 import sys
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, create_engine
 from sqlalchemy.ext.declarative import declarative_base
 
 # Création de l'instance de Base
@@ -27,12 +27,14 @@ class State(Base):
 
 
 if __name__ == "__main__":
+    # Création de l'engine SQLAlchemy pour la connexion à MySQL
     engine = create_engine(
         'mysql+mysqldb://{}:{}@localhost/{}'.format(
-            sys.argv[1],
-            sys.argv[2],
-            sys.argv[3]
+            sys.argv[1],  # Username
+            sys.argv[2],  # Password
+            sys.argv[3]   # Database name
         ),
-        pool_pre_ping=True
+        pool_pre_ping=True  # Vérifie si la connexion est active avant utilisation
     )
+    # Crée les tables dans la base de données selon les modèles définis
     Base.metadata.create_all(engine)

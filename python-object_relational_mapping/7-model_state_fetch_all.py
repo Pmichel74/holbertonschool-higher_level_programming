@@ -16,21 +16,21 @@ if __name__ == "__main__":
             sys.argv[2],  # Password
             sys.argv[3]   # Database name
         ),
-        pool_pre_ping=True  # Vérifie si la connexion est active avant utilisation
+        pool_pre_ping=True  # Vérifie la connexion avant utilisation
     )
-    
+
     # Création d'une classe Session liée à notre engine
     Session = sessionmaker(bind=engine)
-    
+ 
     # Création d'une instance de Session pour interagir avec la base de données
     session = Session()
-    
+
     # Récupération de tous les objets State, triés par ID croissant
     states = session.query(State).order_by(State.id).all()
-    
+
     # Affichage des résultats au format demandé
     for state in states:
         print("{}: {}".format(state.id, state.name))
-    
+
     # Fermeture de la session
     session.close()

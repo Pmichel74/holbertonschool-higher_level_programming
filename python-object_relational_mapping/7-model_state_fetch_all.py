@@ -3,7 +3,7 @@
 Script qui liste tous les objets State de la base de données hbtn_0e_6_usa.
 """
 import sys
-from sqlalchemy import create_engine
+from sqlalchemy import (create_engine)
 from sqlalchemy.orm import sessionmaker
 from model_state import Base, State
 

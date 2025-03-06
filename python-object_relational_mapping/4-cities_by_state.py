@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-    Script that lists all states from the database.
+Script that lists all cities from the database hbtn_0e_4_usa
 """
 import MySQLdb
 import sys
@@ -8,17 +8,15 @@ import sys
 
 def connectDb(user, password, db):
     """
-    Connect to MySQL database
-    
-    Args:
-        user (str): MySQL username
-        password (str): MySQL password
-        db (str): Database name
-        
-    Returns:
-        Connection: MySQL database connection
+        Get connection with the database.
+        Args:
+            user (str): Username of the user.
+            password (str): Password of the user.
+            db (str): Database to retrieve.
+        Return:
+            Connection database.
     """
-    return MySQLdb.connect(
+    conn = MySQLdb.connect(
         host="localhost",
         port=3306,
         user=user,
@@ -26,6 +24,7 @@ def connectDb(user, password, db):
         db=db,
         charset="utf8"
     )
+    return conn
 
 
 if __name__ == "__main__":
@@ -33,17 +32,17 @@ if __name__ == "__main__":
     user = sys.argv[1]
     password = sys.argv[2]
     db = sys.argv[3]
-    arg = sys.argv[4]
 
     # Connect to database
     conn = connectDb(user, password, db)
     cursor = conn.cursor()
 
-    # %s is a placeholder for the state name, preventing SQL injection
-    query = """ SELECT * FROM states WHERE states.name = %s
-        ORDER BY states.id ASC
+    # Query to find all cities with their state name
+    query = """ SELECT cities.id, cities.name, states.name FROM cities
+        JOIN states ON cities.state_id = states.id
+        ORDER BY cities.id ASC
     """
-    cursor.execute(query, (arg,))
+    cursor.execute(query)
 
     # Fetch all the results of the query
     rows = cursor.fetchall()

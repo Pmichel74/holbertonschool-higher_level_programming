@@ -20,7 +20,7 @@ if __name__ == "__main__":
     )
 
     # Création d'une classe Session liée à notre engine
-    Session = sessionmaker(engine)
+    Session = sessionmaker(bind=engine)
  
     # Création d'une instance de Session pour interagir avec la base de données
     session = Session()

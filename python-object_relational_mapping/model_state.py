@@ -18,12 +18,21 @@ class State(Base):
             id (int): Identifiant unique auto-généré et clé primaire
             name (str): Nom de l'état, longueur max 128 caractères
     """
-    # Nom de la table à laquelle la classe est liée
     __tablename__ = 'states'
 
     # Définition des colonnes
-    id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
-    name = Column(String(128), nullable=False)
+    id = Column(
+        Integer,
+        primary_key=True,
+        nullable=False,
+        autoincrement=True
+    )
+    
+    # state name column, cannot be null
+    name = Column(
+        String(128),
+        nullable=False
+    )
 
 
 if __name__ == "__main__":

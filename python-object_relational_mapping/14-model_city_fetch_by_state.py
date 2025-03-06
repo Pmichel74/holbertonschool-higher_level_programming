@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     # Create session factory
     Session = sessionmaker(bind=engine)
- 
+
     # Create session instance
     session = Session()
 

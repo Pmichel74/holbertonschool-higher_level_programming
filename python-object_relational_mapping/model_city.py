@@ -11,7 +11,7 @@ class City(Base):
     """
     City class that inherits from Base
     Links to the MySQL table 'cities'
- 
+
     Attributes:
         id (int): Auto-generated unique identifier and primary key
         name (str): Name of the city, max length 128 characters

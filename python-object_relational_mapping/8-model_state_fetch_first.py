@@ -25,6 +25,9 @@ if __name__ == "__main__":
     # Création d'une instance de Session pour interagir avec la base de données
     session = Session()
 
+    # Création des tables dans la base de données
+    Base.metadata.create_all(engine)
+
     # Récupération du premier objet State par ID
     first_state = session.query(State).order_by(State.id).first()
 

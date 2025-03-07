@@ -72,129 +72,6 @@ python-object_relational_mapping/
 ├── README.md                    # Project documentation
 └── env/                         # Virtual environment directory
 
-📊 Exercise Reviews
-Direct MySQL Scripts
-0️⃣ 0-select_states.py
-Description: This script connects to a MySQL database and lists all states in the states table ordered by ID.
-Skills demonstrated: Basic database connection, cursor handling, query execution.
-Usage: ./0-select_states.py username password database
-1️⃣ 1-filter_states.py
-Description: Lists all states whose name starts with 'N' (case sensitive).
-Skills demonstrated: SQL filtering with LIKE clause, result processing.
-Usage: ./1-filter_states.py username password database
-2️⃣ 2-my_filter_states.py
-Description: Takes a state name as argument and displays all matching states.
-Skills demonstrated: User input handling, string formatting in SQL queries.
-Usage: ./2-my_filter_states.py username password database state_name
-Security issue: ⚠️ Vulnerable to SQL injection.
-3️⃣ 3-my_safe_filter_states.py
-Description: Same as script 2 but safe from SQL injection.
-Skills demonstrated: Parameterized queries, secure database access.
-Usage: ./3-my_safe_filter_states.py username password database state_name
-4️⃣ 4-cities_by_state.py
-Description: Lists all cities from the cities table with their corresponding state names using JOIN.
-Skills demonstrated: JOIN operations, working with multiple tables.
-Usage: ./4-cities_by_state.py username password database
-5️⃣ 5-filter_cities.py
-Description: Lists all cities of a given state using SQL JOIN and safe parameterized queries.
-Skills demonstrated: JOIN operations, result formatting, parameterized queries.
-Usage: ./5-filter_cities.py username password database state_name
-SQLAlchemy ORM Scripts
-🗃️ model_state.py
-Description: Defines the State class that maps to the states table using SQLAlchemy ORM.
-Skills demonstrated: ORM class definition, table mapping, SQLAlchemy declarative base.
-🏙️ model_city.py
-Description: Defines the City class that maps to the cities table using SQLAlchemy ORM.
-Skills demonstrated: ORM class definition, foreign key relationships.
-7️⃣ 7-model_state_fetch_all.py
-Description: Lists all State objects from the database using SQLAlchemy ORM.
-Skills demonstrated: SQLAlchemy engine and session creation, basic queries.
-Usage: ./7-model_state_fetch_all.py username password database
-8️⃣ 8-model_state_fetch_first.py
-Description: Prints the first State object from the database.
-Skills demonstrated: SQLAlchemy query filtering and limit.
-Usage: ./8-model_state_fetch_first.py username password database
-9️⃣ 9-model_state_filter_a.py
-Description: Lists all State objects that contain the letter 'a'.
-Skills demonstrated: SQLAlchemy filtering with like operator.
-Usage: ./9-model_state_filter_a.py username password database
-🔟 10-model_state_my_get.py
-Description: Prints the ID of a State object with a name passed as argument.
-Skills demonstrated: Exact match filtering in SQLAlchemy.
-Usage: ./10-model_state_my_get.py username password database state_name
-1️⃣1️⃣ 11-model_state_insert.py
-Description: Adds a new State object "Louisiana" to the database.
-Skills demonstrated: Creating and adding objects with SQLAlchemy ORM.
-Usage: ./11-model_state_insert.py username password database
-1️⃣2️⃣ 12-model_state_update_id_2.py
-Description: Changes the name of the State object with id=2 to "New Mexico".
-Skills demonstrated: Updating objects with SQLAlchemy ORM.
-Usage: ./12-model_state_update_id_2.py username password database
-1️⃣3️⃣ 13-model_state_delete_a.py
-Description: Deletes all State objects with a name containing the letter 'a'.
-Skills demonstrated: Deleting objects with SQLAlchemy ORM.
-Usage: ./13-model_state_delete_a.py username password database
-1️⃣4️⃣ 14-model_city_fetch_by_state.py
-Description: Lists all City objects by state using SQLAlchemy relationships.
-Skills demonstrated: Working with relationship queries in SQLAlchemy.
-Usage: ./14-model_city_fetch_by_state.py username password database
-🚀 Usage Examples
-Using MySQLdb
-```
-# Example from 0-select_states.py
-#!/usr/bin/python3
-"""Lists all states from the database hbtn_0e_0_usa"""
-import MySQLdb
-import sys
-
-if __name__ == "__main__":
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=sys.argv[1],
-        passwd=sys.argv[2],
-        db=sys.argv[3]
-    )
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM states ORDER BY id ASC")
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
-    cursor.close()
-    db.close()
-```
-Using SQLAlchemy ORM
-```
-# Example from 7-model_state_fetch_all.py
-#!/usr/bin/python3
-"""Lists all State objects from the database hbtn_0e_6_usa"""
-import sys
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from model_state import Base, State
-
-if __name__ == "__main__":
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
-        sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
-    
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    
-    for state in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
-    
-    session.close()
-    ```
-
-📚 Learning Objectives
-Connect to a MySQL database from a Python script
-Execute SELECT queries on a MySQL database from Python
-Understand SQL injection and implement secure queries
-Create and utilize a SQLAlchemy ORM
-Map Python classes to MySQL tables using SQLAlchemy
-Perform CRUD operations using SQLAlchemy
-Understand the difference between raw SQL and ORM approaches
-```
 # 🐍 Python Object-Relational Mapping (ORM) Project 🗄️
 
 <div align="center">
@@ -424,25 +301,15 @@ if __name__ == "__main__":
     session.close()
 ```
 
-## 📚 Learning Objectives
 
-* **Connect to a MySQL database from a Python script**
-* **Execute SELECT queries on a MySQL database from Python**
-* **Understand SQL injection and implement secure queries**
-* **Create and utilize a SQLAlchemy ORM**
-* **Map Python classes to MySQL tables using SQLAlchemy**
-* **Perform CRUD operations using SQLAlchemy**
-* **Understand the difference between raw SQL and ORM approaches**
+📚 Learning Objectives
+Connect to a MySQL database from a Python script
+Execute SELECT queries on a MySQL database from Python
+Understand SQL injection and implement secure queries
+Create and utilize a SQLAlchemy ORM
+Map Python classes to MySQL tables using SQLAlchemy
+Perform CRUD operations using SQLAlchemy
+Understand the difference between raw SQL and ORM approaches
 
-## 🔗 Resources
-
-* [**Object-Relational Mapping**](https://en.wikipedia.org/wiki/Object-relational_mapping)
-* [**SQLAlchemy Documentation**](https://docs.sqlalchemy.org/)
-* [**Python MySQLdb Documentation**](https://mysqlclient.readthedocs.io/)
-* [**MySQL Tutorial**](https://dev.mysql.com/doc/refman/8.0/en/tutorial.html)
-* [**SQL Injection Prevention**](https://owasp.org/www-community/attacks/SQL_Injection)
-* [**Python Database Access**](https://www.python.org/dev/peps/pep-0249/)
-
----
 
 ***This project is part of the Holberton School Higher Level Programming curriculum. It focuses on connecting Python applications to databases using both direct SQL queries and ORM techniques.***

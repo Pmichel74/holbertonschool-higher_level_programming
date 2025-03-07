@@ -78,6 +78,12 @@ The USA database contains:
 - `states`: Contains state IDs and names
 - `cities`: Contains city IDs, names, and foreign keys to states
 
+## 🚀 How to Use
 
-👨‍💻 Author
+1. Connect to your MySQL server:
+   ```bash
+   mysql -u username -p
+```
+
+## 👨‍💻 Author
 Patrick MICHEL - Project compiled and documented with ❤️

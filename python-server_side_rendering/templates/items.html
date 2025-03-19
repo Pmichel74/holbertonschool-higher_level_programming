@@ -1,0 +1,26 @@
+/templates/items.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+</head>
+<body>
+    {% include 'header.html' %}
+
+    <main>
+        <h1>Item List</h1>
+        
+        <ul>
+            {% for item in items %}
+                <li>{{ item }}</li>
+            {% else %}
+                <li>No items found</li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    {% include 'footer.html' %}
+</body>
+</html>

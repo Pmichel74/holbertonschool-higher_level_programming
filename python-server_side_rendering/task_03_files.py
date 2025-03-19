@@ -1,51 +1,85 @@
 from flask import Flask, render_template, request
 import json
 import csv
+import os
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def home():
     return render_template('index.html')
 
-@app.route('/data')
-def get_data():
-    # Récupérer les paramètres de la requête
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
+@app.route('/contact')
+def contact():
+    return render_template('contact.html')
+
+
+@app.route('/items')
+def items():
+    try:
+        with open('items.json') as f:
+            data = json.load(f)
+        items = data.get('items', [])
+        return render_template('items.html', items=items)
+    except FileNotFoundError:
+        return "Items file not found", 404
+    except json.JSONDecodeError:
+        return "Error decoding JSON", 500
+
+
+def read_json(file_path):
+    with open(file_path, 'r') as file:
+        return json.load(file)
+
+
+def read_csv(file_path):
+    products = []
+    with open(file_path, 'r') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            row['id'] = int(row['id'])
+            row['price'] = float(row['price'])
+            products.append(row)
+    return products
+
+
+@app.route('/products')
+def products():
     source = request.args.get('source')
-    item_id = request.args.get('id')
-    
-    data = []
-    error = None
-    
-    # Charger les données selon le paramètre source
+    product_id = request.args.get('id')
+    file_path = ''
+
     if source == 'json':
-        try:
-            with open('products.json', 'r') as file:
-                data = json.load(file)
-        except (FileNotFoundError, json.JSONDecodeError) as e:
-            error = f"Erreur lors du chargement du fichier JSON: {str(e)}"
-    
+        file_path = 'products.json'
+
     elif source == 'csv':
-        try:
-            with open('products.csv', 'r', newline='') as file:
-                csv_reader = csv.DictReader(file)
-                data = list(csv_reader)
-        except FileNotFoundError as e:
-            error = f"Erreur lors du chargement du fichier CSV: {str(e)}"
-    
+        file_path = 'products.csv'
     else:
-        error = "Wrong source"
-    
-    # Filtrer par ID si spécifié et s'il n'y a pas d'erreur
-    if item_id and not error:
-        filtered_data = [item for item in data if str(item.get('id')) == str(item_id)]
-        if not filtered_data:
-            error = "Product not found"
-        else:
-            data = filtered_data
-    
-    # Passer les données et les éventuelles erreurs au template pour l'affichage
-    return render_template('product_display.html', products=data, error=error)
+        return render_template('product_display.html', error="Wrong source")
+
+    if not os.path.exists(file_path):
+        return render_template('product_display.html', error="File not found")
+
+    if source == 'json':
+        products = read_json(file_path)
+    else:
+        products = read_csv(file_path)
+
+    if product_id:
+        product_id = int(product_id)
+        products = [p for p in products if p['id'] == product_id]
+        if not products:
+            return render_template('product_display.html', error="Product not found")
+
+    return render_template('product_display.html', products=products)
+
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)

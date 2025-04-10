@@ -1,8 +1,13 @@
-const listClass = document.querySelector('.my_list');
+// Sélectionner le bouton "Add item"
+const addItem = document.querySelector('#add_item');
 
-const setItem = document.querySelector('#add_item');
-setItem.addEventListener('click', () => {
-  const new = document.createElement('li');
-  new.textContent = 'Item';
-  listClass.appendChild(nuevo);
+// Ajouter un écouteur sur le clic
+addItem.addEventListener('click', () => {
+  // Créer un nouvel élément <li>
+  const newItem = document.createElement('li');
+  newItem.textContent = 'Item';
+
+  // Ajouter ce nouvel élément dans <ul class="my_list">
+  const list = document.querySelector('.my_list');
+  list.appendChild(newItem);
 });
